@@ -15,9 +15,8 @@ function indent() {
   esac
 }
 
-# 
-S3_BUCKET="cl-heroku"
-CCL_PACKAGE="http://${S3_BUCKET}.s3.amazonaws.com/ccl-1.7.tgz"
+# CCL distribution
+CCL_PACKAGE="http://glyfis-heroku-storage.s3.amazonaws.com/software/ccl-1.9-linuxx86.tar.gz"
 
 # parse and derive params
 BUILDPACK_DIR=$(cd $(dirname $0); cd ..; pwd) # absolute path of buildpack
@@ -46,30 +45,30 @@ echo "ccl installed" | indent
 
 # setting up paths for building
 
-echo "-----> Getting patched versions of libraries"
+# echo "-----> Getting patched versions of libraries"
 
-mkdir $CACHE_DIR/repos		# should be under an if to avoid error
-pushd $CACHE_DIR/repos
+# mkdir $CACHE_DIR/repos		# should be under an if to avoid error
+# pushd $CACHE_DIR/repos
 
-if [ -d $CACHE_DIR/repos/portableaserve ]; then
-     echo 'aserve already present'
-     pushd portableaserve
-     git pull origin master
-     popd
-else 
-    git clone git://github.com/mtravers/portableaserve.git
-fi
+# if [ -d $CACHE_DIR/repos/portableaserve ]; then
+#      echo 'aserve already present'
+#      pushd portableaserve
+#      git pull origin master
+#      popd
+# else 
+#     git clone git://github.com/mtravers/portableaserve.git
+# fi
 
-if [ -d $CACHE_DIR/repos/wuwei ]; then
-     echo 'wuwei already present'
-     pushd wuwei
-     git pull origin master
-     popd
-else 
-    git clone git://github.com/mtravers/wuwei.git
-fi
+# if [ -d $CACHE_DIR/repos/wuwei ]; then
+#      echo 'wuwei already present'
+#      pushd wuwei
+#      git pull origin master
+#      popd
+# else 
+#     git clone git://github.com/mtravers/wuwei.git
+# fi
 
-popd
+# popd
 
 export BUILDPACK_DIR
 export CACHE_DIR
