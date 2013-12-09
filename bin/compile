@@ -35,7 +35,7 @@ CCL_DIR="$CACHE_DIR/ccl"
 echo "-----> Installing ccl"
 if [ ! -d $CCL_DIR ]; then
     echo "-----> Fetching ccl"
-    mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -s -o -  | tar xzf - -C $CCL_DIR
+    mkdir -p $CCL_DIR  && curl $CCL_PACKAGE -L -s -o -  | tar xzf - -C $CCL_DIR
 fi
 
 # add to slug 
