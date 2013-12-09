@@ -16,4 +16,4 @@ git clone -l . /tmp/build
 # ln -s /misc/repos/ccl /tmp/cache/ccl
 
 cd /tmp/build
-~/repos/heroku-buildpack-cl/bin/compile /tmp/build /tmp/cache
+~/heroku-buildpack-cl/bin/compile /tmp/build /tmp/cache
