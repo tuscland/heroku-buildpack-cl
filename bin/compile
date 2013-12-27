@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
+# Exit if anything goes wrong
+set -e
+
 function indent() {
   c='s/^/       /'
   case $(uname) in
