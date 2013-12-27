@@ -4,7 +4,7 @@
 (defvar *cache-dir* (pathname (concatenate 'string (getenv "CACHE_DIR") "/")))
 (defvar *buildpack-dir* (pathname (concatenate 'string (getenv "BUILDPACK_DIR") "/")))
 
-(ccl:setenv "XDG_CACHE_HOME" (concatenate 'string (getenv "BUILD_DIR") "/.cache/"))
+;(ccl:setenv "XDG_CACHE_HOME" (concatenate 'string (getenv "BUILD_DIR") "/.cache/"))
 
 (defmacro fncall (funname &rest args)
   `(funcall (read-from-string ,funname) ,@args))
