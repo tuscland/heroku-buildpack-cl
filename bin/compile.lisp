@@ -4,8 +4,7 @@
 (defvar *cache-dir* (pathname (concatenate 'string (getenv "CACHE_DIR") "/")))
 (defvar *buildpack-dir* (pathname (concatenate 'string (getenv "BUILDPACK_DIR") "/")))
 
-;;; Tell ASDF to store binaries in the cache dir
-;(ccl:setenv "XDG_CACHE_HOME" (concatenate 'string (getenv "CACHE_DIR") "/.asdf/"))
+(ccl:setenv "XDG_CACHE_HOME" (concatenate 'string (getenv "CACHE_DIR") "/.asdf/"))
 
 (defmacro fncall (funname &rest args)
   `(funcall (read-from-string ,funname) ,@args))
