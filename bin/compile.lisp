@@ -2,9 +2,9 @@
 
 (require "ASDF")
 
-(defvar *build-dir* (pathname-directory (pathname (concatenate 'string (getenv "BUILD_DIR") "/"))))
-(defvar *cache-dir* (pathname-directory (pathname (concatenate 'string (getenv "CACHE_DIR") "/"))))
-(defvar *buildpack-dir* (pathname-directory (pathname (concatenate 'string (getenv "BUILDPACK_DIR") "/"))))
+(defvar *build-dir* (pathname (concatenate 'string (getenv "BUILD_DIR") "/")))
+(defvar *cache-dir* (pathname (concatenate 'string (getenv "CACHE_DIR") "/")))
+(defvar *buildpack-dir* (pathname (concatenate 'string (getenv "BUILDPACK_DIR") "/")))
 
 ;;; Tell ASDF to store binaries in the cache dir
 ;(ccl:setenv "XDG_CACHE_HOME" (concatenate 'string (getenv "CACHE_DIR") "/.asdf/"))
@@ -54,6 +54,7 @@
                        (format *error-output* "~%~A~%" c)
                        (print-backtrace *error-output*)
                        (format *error-output* "~%~A~%" c)
+                       (quit -1)
                        (return nil))))
       (funcall thunk))))
 
@@ -63,3 +64,6 @@
 ;;; Load the application compile script
 (with-ql-test-context ()
   (load (merge-pathnames "heroku-compile.lisp" *build-dir*)))
+
+;;; Successful exit
+(quit 0)

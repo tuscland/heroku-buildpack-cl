@@ -48,5 +48,5 @@ export BUILD_DIR
 export CCL_DEFAULT_DIRECTORY="$BUILD_DIR/ccl"
 
 echo "-----> Starting build"
-$CCL_DEFAULT_DIRECTORY/scripts/ccl64 --load "$BUILDPACK_DIR/bin/compile.lisp" --eval "(ccl:quit)"
+$CCL_DEFAULT_DIRECTORY/scripts/ccl64 --load "$BUILDPACK_DIR/bin/compile.lisp"
 echo "-----> Build finished"
