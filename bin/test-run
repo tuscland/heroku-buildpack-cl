@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-mv /tmp/cache /tmp/was-cache 
-export PORT=3000
-/tmp/build/lispapp
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+REPO_NAME="$( basename `git rev-parse --show-toplevel` )"
+BUILD_DIR="$TMPDIR/$REPO_NAME/build"
+CACHE_DIR="$TMPDIR/$REPO_NAME/cache"
+CCL_DIR="$CACHE_DIR/ccl"
 
+export PORT=3000
+export XDG_CONFIG_HOME="$BUILD_DIR/.config"
+
+cd $BUILD_DIR
+exec $( grep web Procfile | cut -f 2 -d : )

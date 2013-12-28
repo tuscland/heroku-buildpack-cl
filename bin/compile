@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # bin/compile <build-dir> <cache-dir>
 
 # Exit if anything goes wrong
@@ -54,8 +55,10 @@ export CCL_DEFAULT_DIRECTORY="$BUILD_DIR/ccl"
 mkdir -p $BUILD_DIR/.config/common-lisp/asdf-output-translations.conf.d/
 echo ":disable-cache" > $BUILD_DIR/.config/common-lisp/asdf-output-translations.conf.d/99-disable-cache.conf
 export ASDF_OUTPUT_TRANSLATIONS=/:
+export XDG_CONFIG_HOME="$BUILD_DIR/.config"
 
-# Build fasls
+# Pre-compile fasls
 echo "-----> Starting build"
-$CCL_DEFAULT_DIRECTORY/scripts/ccl64 --load "$BUILDPACK_DIR/bin/compile.lisp"
+# --no-init : don't load CCL's init file when testing on the development computer
+$CCL_DEFAULT_DIRECTORY/scripts/ccl64 -K UTF-8 --no-init --load "$BUILDPACK_DIR/bin/compile.lisp"
 echo "-----> Build finished"
